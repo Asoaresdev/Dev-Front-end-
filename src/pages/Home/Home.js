@@ -1,9 +1,8 @@
 import React from 'react'
 import { BASE_URL } from '../../constants/urls'
-
 import UserCard from '../../components/UserCard/UserCard'
 import { useRequestData } from '../../hooks/useRequestData'
-import { ContainerCards, ContainerSelect } from './styles'
+import { ContainerCards, ContainerHome, ContainerSelect } from './styles'
 
 export default function Home() {
     const [namesUser, setNamesUser] = React.useState([])
@@ -46,9 +45,8 @@ export default function Home() {
             />)
     })
         
-
     return (
-        <div>
+        <ContainerHome>
             <div>
                 <ContainerSelect onChange={ changeName }>
                     <option value={""}>Nenhum</option>
@@ -56,8 +54,8 @@ export default function Home() {
                 </ContainerSelect>
             </div>
             <ContainerCards>
-            { namesUser ? filteredArray : cardListUse }
+                { namesUser ? filteredArray : cardListUse }
             </ContainerCards>
-        </div>
+        </ContainerHome>
     )
 }
