@@ -1,10 +1,7 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
 import { LOGIN_URL } from '../../constants/urls'
-import { useRequestData } from '../../hooks/useRequestData'
-
-
-import { ButtonModal, ContainerAvatar, ContainerCard, ContainerModal } from './styles';
+import { ContainerAvatar, ContainerCard, ContainerModal } from './styles';
 import axios from 'axios';
 
 export default function UserCard(props) {
@@ -12,11 +9,9 @@ export default function UserCard(props) {
     const [open, setOpen] = React.useState(false);
     const [data, setData] = React.useState('')
     
-    // console.log(user);
-  let user = ""
+  
   const HandleOpen = (param) => {
     setOpen(true);
-  //  const userData = () => {
      axios
      .get(`${LOGIN_URL}${param}`)
      .then(response => {
@@ -26,13 +21,12 @@ export default function UserCard(props) {
      .catch(error => {
        console.log(error);
      })
-  //  }
   };
 
   const handleClose = () => {
     setOpen(false);
   };
-console.log(data.name);
+
 
     
     const body = (
