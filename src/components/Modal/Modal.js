@@ -29,8 +29,12 @@ export default function SimpleModal() {
 
   return (
     <div>
-      <Button variant="contained" color="primary" type="button" onClick={handleOpen}>
-        Open Modal
+      <Button 
+        variant="contained" 
+        color="primary" 
+        type="button" 
+        onClick={handleOpen}>
+        Saiba mais
       </Button>
       <Modal
         open={open}
