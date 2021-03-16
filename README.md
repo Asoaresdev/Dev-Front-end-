@@ -1,9 +1,9 @@
 # Teste técnico Dev Front-end Jr - Grupo Tesseract
 
 O teste consistia em:
-_Lista com os atuais membros no Github, com login e foto_
-_Campo de filtro para filtrar os membros (por login)_
-_Ao clicar em um membro, exibir informações  daquela pessoa:_
+1. _Lista com os atuais membros no Github, com login e foto_
+2. _Campo de filtro para filtrar os membros (por login)_
+3. _Ao clicar em um membro, exibir informações  daquela pessoa:_
  - Nome
  - Quantidade de repositórios
  - Quantidade de seguidores
@@ -11,11 +11,11 @@ _Ao clicar em um membro, exibir informações  daquela pessoa:_
  
 Foram dados dois endpoints para consumo de API
 
-Foi utilizado o React para a entrega do teste.
-  Axios para acessar API
-  Hooks
-  Styled-components
-  Material-UI
+## Foi utilizado o React para a entrega do teste.
+ - Axios para acessar API
+ - Hooks
+ - Styled-components
+ - Material-UI
   
   
 ## Como rodar a aplicação :computer:
