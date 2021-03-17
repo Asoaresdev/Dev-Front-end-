@@ -26,15 +26,15 @@ Foram dados dois endpoints para consumo de API
 
 ## Prints da aplicação
 
-  <img src="https://github.com/Asoaresdev/Teste-Dev-Front-end-Jr-Grupo_Tesseract/blob/main/image/Captura%20de%20tela%202021-03-16%20182326.png" width="600">
+  <img src="https://github.com/Asoaresdev/Teste-Dev-Front-end-Jr-Grupo_Tesseract/blob/main/image/Captura%20de%20tela%202021-03-17%20112554.png" width="600">
   
   ______________________________________________________________________________________________________________________________________________________
   
-  <img src="https://github.com/Asoaresdev/Teste-Dev-Front-end-Jr-Grupo_Tesseract/blob/main/image/Captura%20de%20tela%202021-03-16%20182539.png" width="600">
+  <img src="https://github.com/Asoaresdev/Teste-Dev-Front-end-Jr-Grupo_Tesseract/blob/main/image/Captura%20de%20tela%202021-03-17%20112619.png" width="600">
   
   ______________________________________________________________________________________________________________________________________________________
   
-  <img src="https://github.com/Asoaresdev/Teste-Dev-Front-end-Jr-Grupo_Tesseract/blob/main/image/Captura%20de%20tela%202021-03-16%20182619.png" width="600">
+  <img src="https://github.com/Asoaresdev/Teste-Dev-Front-end-Jr-Grupo_Tesseract/blob/main/image/Captura%20de%20tela%202021-03-17%20112640.png" width="600">
   
 ## Como rodar a aplicação :computer:
 No terminal, clone o projeto:
