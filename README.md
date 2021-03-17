@@ -24,6 +24,7 @@ Foram dados dois endpoints para consumo de API
  -  DevTools do Chrome para testes
  -  Git para versionamento
 
+## Prints da aplicação
 
   <img src="https://github.com/Asoaresdev/Teste-Dev-Front-end-Jr-Grupo_Tesseract/blob/main/image/Captura%20de%20tela%202021-03-16%20182326.png" width="600">
   
