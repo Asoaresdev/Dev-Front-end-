@@ -1,14 +1,24 @@
 import styled from 'styled-components'
 import Avatar from '@material-ui/core/Avatar';
 
-
 export const ContainerCard = styled.div`
-    width: 25rem;
-    height:25rem;
     border: 1px solid;
     padding:2rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
+    display:flex;
+    justify-content:space-around;
+    background: #eceff1;
+`
 
+export const ContainerInfos = styled.div`
+    display:flex;
+    flex-direction:column;
+    p{
+       border-top:1.5px solid;
+       border-bottom:1.5px solid;
+       margin-bottom: 2rem;
+       font-size:1.5rem;
+    }
 `
 export const ContainerAvatar = styled(Avatar)`
     width: 150px;
@@ -31,4 +41,8 @@ export const ContainerModal = styled.div`
 `
 export const ButtonModal = styled.button`
     width:10rem;
+`
+
+export const Loading = styled.h1`
+    color: blue;
 `
