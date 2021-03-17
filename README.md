@@ -1,6 +1,6 @@
 # Teste técnico Dev Front-end Jr - Grupo Tesseract
 
-O teste consistia em:
+O teste consiste em:
 1. _Lista com os atuais membros no Github, com login e foto_
 2. _Campo de filtro para filtrar os membros (por login)_
 3. _Ao clicar em um membro, exibir informações  daquela pessoa:_
