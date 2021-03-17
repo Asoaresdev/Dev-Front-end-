@@ -1,21 +1,25 @@
 import React from 'react'
-import Button from '@material-ui/core/Button'
+import { Button} from '@material-ui/core'
+import Modal from '@material-ui/core/Modal';
 import { LOGIN_URL } from '../../constants/urls'
-import { ContainerAvatar, ContainerCard, ContainerModal } from './styles';
+import { ContainerAvatar, ContainerCard, ContainerInfos, ContainerModal, Loading } from './styles';
 import axios from 'axios';
 
 export default function UserCard(props) {
 
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState('')
+  const [isLoading, setIsLoading] = React.useState(false)
     
   // função de abrir o modal e trazer as informações da API
   const HandleOpen = (param) => {
     setOpen(true);
+    setIsLoading(true)
       axios
      .get(`${LOGIN_URL}${ param }`)
      .then(response => {
-       setData(response.data)
+      setData(response.data)
+      setIsLoading(false)
      })
      .catch(error => {
        alert(error);
@@ -27,10 +31,26 @@ export default function UserCard(props) {
     setOpen(false);
   };
 
+// Função para formatar a data 
+  function timeConverter(UNIX_timestamp){
+    let a = new Date(UNIX_timestamp);
+    let months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Augusto','Setembro','Outubro','Novembro','Dezembro'];
+    let year = a.getFullYear();
+    let month = months[a.getMonth()];
+    let date = a.getDate();      
+    let time = date + ' ' + month + ' ' + year + ' '; 
+    return time;
+  }
+
+  const date = timeConverter( data.created_at )
+
+
   // construção do modal 
     const body = (
-        <ContainerModal>
-          <h2 id="simple-modal-title">{data.name}</h2>
+        <ContainerModal >
+          {isLoading ? <Loading>loading...</Loading> : 
+          <div>
+          <h2 id="simple-modal-title">{data.login}</h2>
           <p id="simple-modal-description">
             {data.public_repos} repositórios
           </p>
@@ -38,7 +58,7 @@ export default function UserCard(props) {
             {data.followers} seguidores
           </p>
           <p id="simple-modal-description">
-            Perfil criado em : <br />{data.created_at} 
+            Perfil criado em : <br /><br />{date} 
           </p>
           <Button 
             onClick = {handleClose}
@@ -48,13 +68,15 @@ export default function UserCard(props) {
           >
             fechar
           </Button>
+          </div>
+          }
         </ContainerModal>
       );
 
     return (
       <ContainerCard>
         <ContainerAvatar  alt="Remy Sharp" src={ props.image } />
-        <>
+        <ContainerInfos>
           <p>{ props.name } </p>
           <div>
             <Button 
@@ -64,12 +86,18 @@ export default function UserCard(props) {
               onClick={() =>  HandleOpen(props.login) }>
               Saiba mais
             </Button>
-            { open &&
-            <>
-              {body}
-            </> }
+            
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="simple-modal-title"
+              aria-describedby="simple-modal-description"
+            >
+              {body }
+            </Modal>
+  
           </div>
-        </>
+        </ContainerInfos>
       </ContainerCard>
     )
 }
