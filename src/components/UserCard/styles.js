@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from '@material-ui/core/Avatar'
+
 
 export const ContainerCard = styled.div`
     border: 1px solid;

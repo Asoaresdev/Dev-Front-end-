@@ -16,7 +16,7 @@ export default function UserCard(props) {
   const [data, setData] = React.useState('')
   const [isLoading, setIsLoading] = React.useState(false)
     
-  // função de abrir o modal e puxar as informações da API
+  // função de abrir o modal e trazer as informações da API
   const HandleOpen = (param) => {
     setOpen(true);
     setIsLoading(true)
@@ -43,7 +43,7 @@ export default function UserCard(props) {
     let year = dateToFormat.getFullYear();
     let month = months[dateToFormat.getMonth()];
     let date = dateToFormat.getDate();      
-    let time = date + ' ' + month + ' ' + year + ' '; 
+    let time = date + ' de  ' + month + ' de ' + year + ' '; 
     return time;
   }
   
@@ -67,7 +67,7 @@ export default function UserCard(props) {
           Perfil criado em : <br /><br />{date} 
         </p>
         <Button 
-          onClick = {handleClose}
+          onClick = { handleClose }
           variant="contained" 
           color="primary" 
           type="button"
@@ -81,7 +81,7 @@ export default function UserCard(props) {
 
   return (
     <ContainerCard>
-      <ContainerAvatar  alt="Remy Sharp" src={ props.image } />
+      <ContainerAvatar  alt="avatar" src={ props.image } />
       <ContainerInfos>
         <p>{ props.name } </p>
         <div>

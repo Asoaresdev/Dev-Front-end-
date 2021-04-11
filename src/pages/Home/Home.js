@@ -2,11 +2,15 @@ import React from 'react'
 import { BASE_URL } from '../../constants/urls'
 import UserCard from '../../components/UserCard/UserCard'
 import { useRequestData } from '../../hooks/useRequestData'
-import { ContainerCards, ContainerHome, ContainerSelect } from './styles'
+import { useForm } from '../../hooks/useForm'
+import { Button} from '@material-ui/core'
+import { ContainerCards, ContainerHome, Buttonstyled, ContainerForm } from './styles'
 
 export default function Home() {
-    const [namesUser, setNamesUser] = React.useState([])
+    const [showButton, setShowButton] = React.useState(false)
+    const [selectedCards, setSelectedCards] = React.useState([])
     const listUser = useRequestData([], BASE_URL)
+    
 
     // montando os cards com as infos da API 
     const cardListUse = listUser.map((item) =>{
@@ -20,41 +24,82 @@ export default function Home() {
         )
     })
 
-    // montando o select com as infos da API 
-    const names = listUser.map((item) => {
-        return(
-            <option value={item.login} key={item.id}>{item.login}</option>
-        )
-    })
+    //montando o input e a lógica
+    function FormInput(){
+        const { form, onChange } = useForm({ inputSearch: "" })
+        
+        const handleInput = (event) => {
+            const { value, name } = event.target
+            onChange (value, name)
+        }
+   
+        const onSubmitForm = ( event ) => {
+            event.preventDefault()
 
-    const changeName=(event)=>{
-        setNamesUser(event.target.value)
+            const filteredArray = listUser.filter((item) => {
+                if (item.login.toLowerCase().includes(form.inputSearch.toLowerCase()))
+                    return item
+                else 
+                    return null
+            })
+            .map((item) => {
+                return (
+                    <UserCard
+                        image={ item.avatar_url }
+                        key={ item.id }
+                        name={ item.login }
+                        login={ item.login }
+                    />)
+            })
+                                    
+            setSelectedCards(filteredArray)
+            setShowButton(true)  
+        }
+
+        const goBack = (event) => {
+            setSelectedCards([])
+            setShowButton(false)
+        }
+
+        return(
+            <ContainerForm onSubmit={ onSubmitForm }>
+                <label>Busca por login </label>
+                <>
+                {!showButton ?
+                <Buttonstyled>
+                    <input 
+                        type="text"
+                        value={ form.inputSearch }
+                        onChange={ handleInput }
+                        name={ 'inputSearch' }
+                        required
+                    />
+                    
+                    <button 
+                        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
+                    >Buscar
+                    </button>
+                </Buttonstyled>
+              :
+                <Button
+                    onClick= { goBack }
+                    variant="contained" 
+                    color="secondary" 
+                    >Cancelar
+                </Button> 
+                }
+                </>
+            </ContainerForm>
+        )
     }
     
-    // busca 
-    const filteredArray = listUser.filter((item) =>{
-        if(item.login.includes(namesUser))
-            return item
-    }).map((item) =>{
-        return (
-            <UserCard 
-                image = { item.avatar_url }
-                key={ item.id }
-                name = { item.login }
-                login = { item.login }
-            />)
-    })
-        
     return (
         <ContainerHome>
             <div>
-                <ContainerSelect onChange={ changeName }>
-                    <option value={""}>Nenhum</option>
-                    { names }
-                </ContainerSelect>
+               <FormInput />
             </div>
             <ContainerCards>
-                { namesUser ? filteredArray : cardListUse }
+                { selectedCards.length >0 ? selectedCards : cardListUse }
             </ContainerCards>
         </ContainerHome>
     )
