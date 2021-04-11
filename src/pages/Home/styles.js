@@ -17,3 +17,31 @@ export const ContainerSelect = styled.select`
     background: lightgray;
     margin-top: 3rem;
 `
+
+export const ContainerForm = styled.form`
+    display: grid;
+    grid-template-rows:1fr 1fr;
+    gap:.5rem;
+    justify-content:center;
+    align-items: center;
+    div{
+        display:grid;
+        grid-template-columns:15rem 1fr 1fr;
+        gap:1rem;
+    }
+    label {
+        font-size: 1.5rem;
+    }
+    input{
+        height: 2.4rem;
+        font-size: 1.2rem;
+    }
+`
+
+export const Buttonstyled = styled.div`
+    width: 30rem;
+    button{
+        width:10rem;
+    }
+`
+
